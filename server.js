@@ -5,9 +5,6 @@ var express = require("express"),
     app = express(),
     oneDay = 86400000;
 
-console.log(app.settings.env);
-
-
 app.use(modRw([
   '!png|jpg|jpeg|gif|css|js|html|ttf|pdf|svg|webp$ /index.html [L]'
 ]));
