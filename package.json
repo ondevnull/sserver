@@ -1,0 +1,18 @@
+{
+  "name": "sserver",
+  "version": "0.0.1",
+  "description": "Quick and Dirty Static Server",
+  "main": "index.js",
+  "bin": {
+    "sserver": "./server.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jose Luis Rivas <me@ghostbar.co>",
+  "license": "MIT",
+  "dependencies": {
+    "connect-modrewrite": "~0.5.11",
+    "express": "~3.4.8"
+  }
+}
