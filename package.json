@@ -2,17 +2,30 @@
   "name": "sserver",
   "version": "0.0.1",
   "description": "Quick and Dirty Static Server",
-  "main": "index.js",
+  "main": "server.js",
   "bin": {
     "sserver": "./server.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "static",
+    "server",
+    "quick",
+    "dirty"
+  ],
   "author": "Jose Luis Rivas <me@ghostbar.co>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ghostbar/sserver"
+  },
   "dependencies": {
     "connect-modrewrite": "~0.5.11",
     "express": "~3.4.8"
+  },
+  "engines": {
+    "node": ">=0.10.21"
   }
 }
