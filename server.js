@@ -16,7 +16,7 @@ app.configure('development', function() {
   app.use('/scripts', express["static"](dir + '/.tmp/scripts'));
   app.use(express["static"](dir + '/app'));
   app.use(express.compress());
-  return app.use(express.logger());
+  app.use(express.logger());
 });
 
 app.configure('staging', function() {
