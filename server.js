@@ -3,6 +3,8 @@
 var express = require("express"),
     modRw = require('connect-modrewrite'),
     app = express(),
+    path = require('path'),
+    dir = path.resolve('./'),
     oneDay = 86400000;
 
 app.use(modRw([
@@ -10,27 +12,27 @@ app.use(modRw([
 ]));
 
 app.configure('development', function() {
-  app.use('/styles', express["static"](__dirname + '/.tmp/styles'));
-  app.use('/scripts', express["static"](__dirname + '/.tmp/scripts'));
-  app.use(express["static"](__dirname + '/app'));
+  app.use('/styles', express["static"](dir + '/.tmp/styles'));
+  app.use('/scripts', express["static"](dir + '/.tmp/scripts'));
+  app.use(express["static"](dir + '/app'));
   app.use(express.compress());
   return app.use(express.logger());
 });
 
 app.configure('staging', function() {
-  app.use(express["static"](__dirname + '/dist'));
-  return app.use(express.compress());
+  app.use(express["static"](dir + '/dist'));
+  app.use(express.compress());
 });
 
 app.configure('production', function() {
-  app.use(express["static"](__dirname + '/dist'));
-  return app.use(express.compress());
+  app.use(express["static"](dir + '/dist'));
+  app.use(express.compress());
 });
 
 exports.startServer = function(port, path, callback) {
   var p = process.env.PORT || port;
 
-  console.log("Starting server on port: " + p + ", path /" + path);
+  console.log("Starting server on port: " + p + ", path: " + path);
 
   app.listen(p);
 
@@ -42,5 +44,5 @@ exports.startServer = function(port, path, callback) {
 
 // If `PORT` is sent, then it will auto-start the server.
 if (process.env.PORT) {
-  this.startServer(process.env.PORT, "dist");
+  this.startServer(process.env.PORT, dir + "/dist");
 }
